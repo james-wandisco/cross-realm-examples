@@ -1,0 +1,2 @@
+# cross-realm-examples
+How to set up cross realm trust between two secure hadoop clusters with their own Kerberos realms(KDC’s).  This document highlights the concepts and is applied to two hadoop 3 clusters where configuration files are not managed by a config manager. This will help you understand what you are doing but refer to the vendor's official doc to apply similar concepts to CDP, CDH, HDP.
