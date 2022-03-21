@@ -1,17 +1,23 @@
 # cross-realm-examples
 How to set up cross realm trust between two secure hadoop clusters with their own Kerberos realms(KDC’s).  This document highlights the concepts and is applied to two hadoop 3 clusters where configuration files are not managed by a config manager. This will help you understand what you are doing but refer to the vendor's official doc to apply similar concepts to CDP, CDH, HDP.
-## Prerequisites
+
+**project_hadoop_only_enable_cross_realm** is an ansible config which will set the below environment to two way cross-realm authentication.
+Run the playbook with..
+```
+ansible-playbook project_hadoop_only_enable_cross_realm/site.yml -i project_hadoop_only_enable_cross_realm/inventory
+```
+
+### Prerequisites
 Two hadoop clusters with Kerberos enabled.
 Network access from the client host to the KDC for each Realm
 The hostnames must be resolvable.
 Both clusters must be running JDK 1.7 or higher. JDK 1.6 has some known issues.
  
-## Specification.
-Hadoop version:  hadoop-3.1.1
-OS version: CentOS Linux release 7.5.1804 (Core)
-Kerberos: 1.15.1-51.el7_9.x86_64
-Java: openjdk version "1.8.0_322"
-Note: No Cloudera or Hortonworks, this is pure hadoop to test and become familiar with the core concepts applied.
+### Specification.
+- hadoop-3.1.1
+- CentOS Linux release 7.5.1804 (Core)
+- Kerberos: 1.15.1-51.el7_9.x86_64
+- openjdk version "1.8.0_322"
 
 ## Example 1: Make Cluster 2 'trust' Cluster 1. (one way.)
 For a client of Cluster 1 to access a service in realm Cluster 2, do the following 4 steps.
