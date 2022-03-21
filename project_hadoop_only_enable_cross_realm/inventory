@@ -1,0 +1,12 @@
+[both_kadmin_nodes]
+azvmcloud1 ansible_ssh_user=root
+azvmcloud2 ansible_ssh_user=root
+
+[all_cluster1_nodes]
+azvmcloud1 ansible_ssh_user=root
+
+[all_cluster2_nodes]
+azvmcloud2 ansible_ssh_user=root
+
+[buildbox]
+buildbox ansible_ssh_user=root

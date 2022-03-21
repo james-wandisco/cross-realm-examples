@@ -1,0 +1,7 @@
+---
+
+- name: "Create cross-realm principal 1"
+  command: /usr/sbin/kadmin.local -q 'addprinc -pw password krbtgt/TARGETREALM.HADOOP@CLOUDREALM.HADOOP'
+
+- name: "Create cross-realm principal 2"
+  command: /usr/sbin/kadmin.local -q 'addprinc -pw password krbtgt/CLOUDREALM.HADOOP@TARGETREALM.HADOOP'

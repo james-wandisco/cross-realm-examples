@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+    <property>
+        <name>fs.default.name</name>
+        <value>hdfs://{{ namenode_host1 }}:9000</value>
+    </property>
+    <property>
+        <name>hadoop.security.authentication</name>
+        <value>kerberos</value>
+    </property>
+    <property>
+        <name>hadoop.security.authorization</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hadoop.security.auth_to_local</name>
+        <value>
+            RULE:[2:$1/$2@$0](hdfs/.*@{{ realm1 }})s/.*/hdfs/
+            RULE:[2:$1/$2@$0](hive/.*@{{ realm1 }})s/.*/hive/
+            RULE:[2:$1/$2@$0](nn/.*@{{ realm1 }})s/.*/nn/
+            RULE:[2:$1/$2@$0](dn/.*@{{ realm1 }})s/.*/dn/
+            RULE:[2:$1/$2@$0](rm/.*@{{ realm1 }})s/.*/rm/
+            RULE:[2:$1/$2@$0](nm/.*@{{ realm1 }})s/.*/nm/
+            RULE:[2:$1/$2@$0](jhs/.*@{{ realm1 }})s/.*/jhs/
+            RULE:[2:$1/$2@$0](hdfs/.*@{{ realm2 }})s/.*/hdfs/
+            DEFAULT
+        </value>
+    </property>
+    <property>
+        <name>hadoop.rpc.protection</name>
+        <value>privacy</value>
+    </property>
+</configuration>

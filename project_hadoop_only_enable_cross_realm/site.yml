@@ -1,0 +1,31 @@
+---
+
+- hosts: both_kadmin_nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+  any_errors_fatal: true
+  gather_facts: yes
+  roles:
+    - kerberos_add_cross_realm_princs
+
+- hosts: all_cluster1_nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+  any_errors_fatal: true
+  gather_facts: yes
+  roles:
+    - kerberos_config_cluster1
+    - hadoop_add_config_cluster1
+
+
+- hosts: all_cluster2_nodes
+  become: yes
+  become_user: root
+  become_method: sudo
+  any_errors_fatal: true
+  gather_facts: yes
+  roles:
+    - kerberos_config_cluster2
+    - hadoop_add_config_cluster2

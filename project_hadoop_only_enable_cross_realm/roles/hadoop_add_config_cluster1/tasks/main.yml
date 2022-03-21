@@ -1,0 +1,10 @@
+---
+
+- name: "Copy core-site.xml on cluster 1"
+  ansible.builtin.template:
+    src: templates/core-site.xml.j2
+    dest: "{{ hadoop_conf_dir }}/core-site.xml"
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
